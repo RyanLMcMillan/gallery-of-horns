@@ -1,15 +1,18 @@
 import React from 'react';
 import './App.css';
-import Header from './header.js';
-import Main from './main.js';
-import Footer from './footer.js';
-
+import Header from './Header.js';
+import Main from './Main.js';
+import Footer from './Footer.js';
+import data from './data.json';
+import "bootstrap/dist/css/bootstrap.min.css"
 class App extends React.Component{
   render(){
     return(
       <>
         <Header/>
-        <Main/>
+        <Main
+        data={data}
+        />
         <Footer/>
       </>
     )
