@@ -1,4 +1,4 @@
-import Main from './Main.js';
+// import Main from './Main.js';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import React from 'react';
