@@ -1,0 +1,10 @@
+main{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
+}
+
+#ModelImg{
+  width: 18rem
+}
