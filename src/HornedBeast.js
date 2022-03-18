@@ -1,7 +1,7 @@
 import React from 'react';
+import './HornedBeast.css'
 import {Card, CardGroup} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-
 
 class HornedBeast extends React.Component {
   constructor(props) {
@@ -22,12 +22,12 @@ class HornedBeast extends React.Component {
     return (
       <>
         <article>
-          <CardGroup>
+          <CardGroup className='h-100'>
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={this.props.image_url} onClick={this.handleShowModal}/>
+            <Card.Img className="image" variant="top" src={this.props.image_url} onClick={this.handleShowModal}/>
             <Card.Body>
-              <Card.Title >{this.props.title}</Card.Title>
-              <Card.Text>
+              <Card.Title className="CardTitle">{this.props.title}</Card.Title>
+              <Card.Text className="CardText">
                 {this.props.description}
               </Card.Text>
               <Button variant="primary" onClick={this.handleLikes}>Like</Button>

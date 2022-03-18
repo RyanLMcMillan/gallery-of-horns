@@ -7,14 +7,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import data from './data.json';
 import SelectedBeast from './SelectedBeast.js';
+import { Form } from 'react-bootstrap';
 // import Image from 'react-bootstrap/Image';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       likes: '',
       title: '',
-      // showModal: false
+      numberHorns: data,
       modalContent: null,
     };
   }
@@ -39,6 +41,34 @@ class App extends React.Component {
       }
     });
   };
+
+  handleSelect = (e) => {
+    let selected = parseInt(e.target.value);
+    
+    // parse data of horns
+    let newArr = data;
+    if(selected === 1){
+      newArr = data.filter((num) => num.horns === 1 );
+
+    } else if(selected === 2){
+      newArr = data.filter((num) => num.horns === 2 )
+      
+    } else if (selected === 3){
+      newArr = data.filter((num) => num.horns >= 3)
+      
+    }
+    
+    this.setState({numberHorns: newArr})
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    // Expand if statement to handle every value from the Form
+    this.setState({
+      submittedHorns: e.target.horns.value,
+      submittedSelected: e.target.selected.value,
+    });
+  }
+
   render() {
     let modalContent;
     if (this.state.modalContent) {
@@ -56,10 +86,25 @@ class App extends React.Component {
         <Header
           likes={this.state.likes}
         />
+        <Form onChange={this.handleSubmit}/>
+          <Form.Label>Display this many Horns</Form.Label>
+          <Form.Group>
+            <Form.Select name="selected" onChange={this.handleSelect}>
+              <option value="0">All Beasts</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three-ish</option>
+            </Form.Select>
+          </Form.Group>
+          {/* <Button type="submit">Submit</Button> */}
+        <Form/>
         <Main
-          data={data}
+          // data={data}
+          data = {this.state.numberHorns}
           addLikes={this.addLikes}
           openModal={this.openModal}
+          // findNumHorns={this.findNumHorns}
+          
         />
         <Footer />
         {modalContent}
