@@ -5,9 +5,8 @@ import './Main.css';
 
 class Main extends React.Component {
   render() {
-    let beasts = []
-    this.props.data.forEach((hornedBeast, index) => {
-      beasts.push(
+    let beasts = this.props.data.map((hornedBeast, index) => {
+      return(
         <HornedBeast
           image_url={hornedBeast.image_url}
           title={hornedBeast.title}
